@@ -1,0 +1,1 @@
+ALTER TABLE `web_db`.`users` CHANGE COLUMN `user_name` `name` VARCHAR(20) NOT NULL;

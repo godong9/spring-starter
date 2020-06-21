@@ -1,0 +1,70 @@
+server:
+  port: 8080
+
+spring:
+  jackson:
+    property-naming-strategy: com.fasterxml.jackson.databind.PropertyNamingStrategy.SnakeCaseStrategy
+    deserialization.fail-on-unknown-properties: false
+  jpa:
+    show-sql: false
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: false
+    locations: classpath:db/migration
+
+---
+
+spring:
+  profiles: local
+  h2:
+    console:
+      enabled: true
+      path: /h2db
+  flyway:
+    enabled: true
+    url: jdbc:h2:file:./h2db/h2db;MODE=MySQL
+    user: test
+    password: 1234
+    baseline-on-migrate: true
+    baseline-version: 0
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:file:./h2db/h2db;MODE=MySQL
+    username: test
+    password: 1234
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://localhost:13306/web_db?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+    username: test
+    password: test
+  flyway:
+    enabled: true
+    url: jdbc:mysql://localhost:13306/web_db
+    user: test
+    password: test
+    baseline-on-migrate: true
+    baseline-version: 0
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+---
+
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:mysql://localhost/web_db?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+    username: test
+    password: test
+
