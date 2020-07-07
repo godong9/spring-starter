@@ -18,7 +18,7 @@ spring:
 ---
 
 spring:
-  profiles: local
+  profiles: test
   h2:
     console:
       enabled: true
@@ -41,6 +41,7 @@ spring:
       ddl-auto: update
 
 ---
+
 spring:
   profiles: dev
   datasource:

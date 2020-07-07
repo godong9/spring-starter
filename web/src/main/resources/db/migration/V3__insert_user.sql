@@ -1,0 +1,1 @@
+INSERT INTO `web_db`.`users`(`name`, `email`, `password`, `created_at`, `updated_at`) VALUES('gd', 'gd.go@gdgo.com', 'test', now(), now());
