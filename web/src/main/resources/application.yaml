@@ -3,7 +3,7 @@ server:
 
 spring:
   jackson:
-    property-naming-strategy: com.fasterxml.jackson.databind.PropertyNamingStrategy.SnakeCaseStrategy
+    property-naming-strategy: SNAKE_CASE
     deserialization.fail-on-unknown-properties: false
   jpa:
     show-sql: false
